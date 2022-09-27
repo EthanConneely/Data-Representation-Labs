@@ -47,7 +47,7 @@ class Car extends Vehicle
     }
 }
 
-// Create class car the inherits from the parent vehicle class
+// Create class car that inherits from the parent vehicle class
 let car = new Car("Honda", "Civic", 2365, 23)
 
 // call the infotmation method that calls the super method in Vehicle
