@@ -8,7 +8,7 @@ export class Books extends Component
         return (
             this.props.books.map(book =>
             (
-                <BookItem book={book}></BookItem>
+                <BookItem book={book} key={book.isbn}></BookItem>
             )
             )
         );
