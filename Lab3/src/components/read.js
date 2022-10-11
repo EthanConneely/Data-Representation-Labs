@@ -44,7 +44,6 @@ export class Read extends Component
     {
         return (
             <div >
-                <h3>Hello from Read</h3>
                 <Books books={this.state.books}></Books>
             </div>
         );
