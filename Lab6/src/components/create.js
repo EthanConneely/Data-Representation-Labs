@@ -44,6 +44,7 @@ export class Create extends Component
         this.setState({ thumbnailUrl: event.target.value })
     }
 
+    // render html
     render()
     {
         return (
