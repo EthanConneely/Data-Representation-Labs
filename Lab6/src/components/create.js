@@ -9,7 +9,7 @@ export class Create extends Component
         super(props);
 
         // Set default state
-        this.state = { title: '', year: '', url: '' };
+        this.state = { title: '', year: '', thumbnailUrl: '' };
 
         // Bind events
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -22,9 +22,8 @@ export class Create extends Component
     {
         event.preventDefault();
 
-        console.log(JSON.stringify(this.state));
-
-        axios.post("http://localhost:4000/api/books/", JSON.stringify(this.state))
+        // Send data to the server
+        axios.post("http://localhost:4000/api/books/", this.state)
     }
 
     changeTitle(event)
@@ -42,7 +41,7 @@ export class Create extends Component
     changeUrl(event)
     {
         // Update the state from the
-        this.setState({ url: event.target.value })
+        this.setState({ thumbnailUrl: event.target.value })
     }
 
     render()
@@ -56,7 +55,7 @@ export class Create extends Component
                 <input type="text" value={this.state.year} onChange={this.changeYear} />
 
                 <p>Add Book Page Url:</p>
-                <input type="text" value={this.state.url} onChange={this.changeUrl} />
+                <input type="text" value={this.state.thumbnailUrl} onChange={this.changeUrl} />
                 <br />
                 <br />
                 <Button type="submit" value="Submit" >Submit</Button>

@@ -16,18 +16,9 @@ app.use(function (req, res, next)
 });
 
 // Middleware
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
 
-app.get('/', (req, res) =>
-{
-    res.send('Welcome to Data Representation & Querying')
-})
-
-app.get('/hello/:name', (req, res) =>
-{
-    res.send('Hello ' + req.params.name)
-})
-
+// Data
 let jsonBooksData =
 {
     "books": [
@@ -71,37 +62,19 @@ let jsonBooksData =
     ]
 }
 
-
+// Get books api route
 app.get('/api/books', (req, res) =>
 {
     res.json(jsonBooksData)
 })
 
+// Post books route
 app.post('/api/books', (req, res) =>
 {
-
-    console.log(req.body);
-    jsonBooksData.books.push({ title: json.title, year: json.year, thumbnailUrl: json.url })
-})
-
-
-app.get('/test', (req, res) =>
-{
-    var options = {
-        root: path.join(__dirname)
-    };
-    res.sendFile("./index.html", options)
-})
-
-app.get('/name', (req, res) =>
-{
-    res.send("Hi " + req.query.first + " " + req.query.last)
-})
-
-app.post('/name', (req, res) =>
-{
-    console.log(req.body.first);
-    res.send("First Name: " + req.body.first)
+    let result = req.body;
+    result.isbn = Math.round(Math.random() * 1000000000)
+    result.authors = ["Me"]
+    jsonBooksData.books.push(result)
 })
 
 app.listen(port, () =>
