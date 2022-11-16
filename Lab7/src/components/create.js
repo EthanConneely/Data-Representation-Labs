@@ -9,13 +9,14 @@ export class Create extends Component
         super(props);
 
         // Set default state
-        this.state = { title: '', year: '', thumbnailUrl: '' };
+        this.state = { title: '', year: '', thumbnailUrl: '', author: '' };
 
         // Bind events
         this.handleSubmit = this.handleSubmit.bind(this);
         this.changeTitle = this.changeTitle.bind(this);
         this.changeYear = this.changeYear.bind(this);
         this.changeUrl = this.changeUrl.bind(this);
+        this.changeAuthor = this.changeAuthor.bind(this);
     }
 
     handleSubmit(event)
@@ -44,6 +45,12 @@ export class Create extends Component
         this.setState({ thumbnailUrl: event.target.value })
     }
 
+    changeAuthor(event)
+    {
+        // Update the state from the
+        this.setState({ author: event.target.value })
+    }
+
     // render html
     render()
     {
@@ -57,6 +64,10 @@ export class Create extends Component
 
                 <p>Add Book Page Url:</p>
                 <input type="text" value={this.state.thumbnailUrl} onChange={this.changeUrl} />
+
+                <p>Add Author:</p>
+                <input type="text" value={this.state.author} onChange={this.changeAuthor} />
+
                 <br />
                 <br />
                 <Button type="submit" value="Submit" >Submit</Button>

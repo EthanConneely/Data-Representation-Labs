@@ -21,7 +21,7 @@ export class Read extends Component
             {
                 // Update the state
                 console.log(resp.data);
-                this.setState({ books: resp.data.books });
+                this.setState({ books: resp.data });
             }
         )
     }

@@ -11,7 +11,7 @@ export class BookItem extends Component
                     <Card.Img variant="top" src={this.props.book.thumbnailUrl} />
                     <Card.Body>
                         <Card.Title>{this.props.book.title}</Card.Title>
-                        <Card.Text>by <b>{this.props.book.authors[0]}</b></Card.Text>
+                        <Card.Text>by <b>{this.props.book.author}</b></Card.Text>
                     </Card.Body>
                 </Card>
             </div>
