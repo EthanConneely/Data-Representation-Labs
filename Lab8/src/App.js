@@ -31,7 +31,6 @@ class App extends React.Component
                                 <Nav.Link href="/">Home</Nav.Link>
                                 <Nav.Link href="/read">Read</Nav.Link>
                                 <Nav.Link href="/create">Create</Nav.Link>
-                                <Nav.Link href="/edit">Edit</Nav.Link>
                             </Nav>
                         </Container>
                     </Navbar>

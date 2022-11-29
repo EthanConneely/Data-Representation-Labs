@@ -53,6 +53,7 @@ app.post('/api/books', (req, res) =>
 
 app.get('/api/books', (req, res) =>
 {
+
     bookModel.find((error, data) =>
     {
         res.json(data);
@@ -71,10 +72,31 @@ app.get('/api/book/:id', (req, res) =>
 app.put('/api/book/:id', (req, res) =>
 {
     console.log(req.params.id);
-    bookModel.findById(req.params.id, (error, data) =>
-    {
-        res.json(data);
-    })
+    console.log(req.body);
+
+
+    bookModel.updateOne(
+        { _id: { $eq: req.params.id } },
+        [
+            { $set: { title: req.body.title, cover: req.body.cover, author: req.body.author } }
+        ], {},
+        (err, docs) =>
+        {
+            if (err)
+            {
+                res.json(err);
+                console.log(err)
+            }
+            else
+            {
+                res.json("Updated Docs : " + docs);
+                console.log("Updated Docs : ", docs);
+            }
+
+        }
+    )
+
+
 })
 
 
