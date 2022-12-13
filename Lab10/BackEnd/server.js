@@ -20,6 +20,10 @@ app.use(function (req, res, next)
     next();
 });
 
+const path = require("path");
+app.use(express.static(path.join(__dirname, "../build/")))
+app.use("static", express.static(path.join(__dirname, "../build/static/")))
+
 //mongodb+srv://admin:<password>@cluster0.8taek.mongodb.net/?retryWrites=true&w=majority
 // getting-started.js
 const mongoose = require('mongoose');
@@ -96,6 +100,15 @@ app.put('/api/book/:id', (req, res) =>
             res.send(data);
         })
 })
+
+app.get('*', (req, res) =>
+{
+    bookModel.find((error, data) =>
+    {
+        res.sendFile(path.join(__dirname, "/../build/index.html"))
+    })
+})
+
 
 app.listen(port, () =>
 {
